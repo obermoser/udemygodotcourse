@@ -12,13 +12,18 @@ func _physics_process(delta: float) -> void:
 	move()
 	
 
-#region Movement
 func move() -> void:
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction := transform.basis * Vector3(input_dir.x, 0, input_dir.y)
 	
 	velocity.z = direction.z * normal_speed
 	velocity.x = direction.x * normal_speed
-	
 	move_and_slide()
-#endregion
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		look_around(event.relative)
+		
+func look_around(relative: Vector2) -> void:
+	rotate_y(-relative.x * mouse_sensitivity)
+	head.rotate_x(-relative.y * mouse_sensitivity)
