@@ -11,6 +11,14 @@ extends CharacterBody3D
 func _physics_process(delta: float) -> void:
 	move()
 	
-	
+
+#region Movement
 func move() -> void:
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+	var direction := transform.basis * Vector3(input_dir.x, 0, input_dir.y)
+	
+	velocity.z = direction.z * normal_speed
+	velocity.x = direction.x * normal_speed
+	
+	move_and_slide()
+#endregion

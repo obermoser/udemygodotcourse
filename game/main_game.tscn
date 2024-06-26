@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c48bidlc75pem"]
+[gd_scene load_steps=11 format=3 uid="uid://c48bidlc75pem"]
 
 [ext_resource type="PackedScene" uid="uid://b27ba5vhn2yxw" path="res://meshes/terrain.tscn" id="1_f55wn"]
 [ext_resource type="PackedScene" uid="uid://f8bdgsaiut1m" path="res://meshes/tree.tscn" id="2_cavcw"]
 [ext_resource type="PackedScene" uid="uid://d0dfje34apaov" path="res://meshes/mushroom.tscn" id="3_1te3g"]
+[ext_resource type="PackedScene" uid="uid://f85ucjpgno8u" path="res://actors/player/player.tscn" id="4_hx04w"]
+[ext_resource type="LightmapGIData" uid="uid://bifw3gk55jj87" path="res://game/main_game.lmbake" id="5_x8m6v"]
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_gucb7"]
 transparency = 1
@@ -64,8 +66,8 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="StageController/Island"]
 environment = SubResource("Environment_mah7y")
 
-[node name="ReflectionProbe" type="ReflectionProbe" parent="StageController/Island"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.57211, 0, -3.16586)
-size = Vector3(133.36, 20, 180.314)
-box_projection = true
-enable_shadows = true
+[node name="LightmapGI" type="LightmapGI" parent="StageController/Island"]
+light_data = ExtResource("5_x8m6v")
+
+[node name="Player" parent="." instance=ExtResource("4_hx04w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02431, 2.4395, 10.4717)
