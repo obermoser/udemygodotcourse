@@ -5,6 +5,8 @@
 [node name="Pickup Template" type="Node3D"]
 
 [node name="Pickupable" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_j53oj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pickupable"]

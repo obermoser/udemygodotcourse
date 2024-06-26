@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://brn1ykyikuxxw" path="res://items/interactables/pickup_template.tscn" id="1_12lds"]
 [ext_resource type="PackedScene" uid="uid://dtmuvlxu8txuc" path="res://meshes/stone.tscn" id="2_gol03"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_potlh"]
-size = Vector3(0.197266, 0.241577, 0.196777)
+[sub_resource type="SphereShape3D" id="SphereShape3D_jtq0y"]
+radius = 0.0927681
 
 [node name="Pickupable Stone" instance=ExtResource("1_12lds")]
 
@@ -14,6 +14,6 @@ prompt = "Pickup Stone"
 
 [node name="CollisionShape3D" parent="Pickupable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.000976562, 0.0114746, -0.000671386)
-shape = SubResource("BoxShape3D_potlh")
+shape = SubResource("SphereShape3D_jtq0y")
 
 [node name="Stone" parent="." index="1" instance=ExtResource("2_gol03")]

@@ -7,12 +7,16 @@ extends CharacterBody3D
 @export var gravity := 0.2
 
 @onready var head:Node3D = $Head
+@onready var interaction_raycast: RayCast3D = $"Head/Interaction Raycast"
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta: float) -> void:
 	move()
+	
+func _process(delta: float) -> void:
+	interaction_raycast.check_interaction()
 	
 func move() -> void:
 	var is_sprinting : bool

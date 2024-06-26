@@ -61,6 +61,12 @@ interact={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="ground"
+3d_physics/layer_2="actor"
+3d_physics/layer_3="interactable"
+
 [rendering]
 
 anti_aliasing/quality/msaa_3d=1
