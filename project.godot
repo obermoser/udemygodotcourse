@@ -16,10 +16,14 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/image="res://textures/zombieville-svgrepo-com.png"
 config/icon="res://icon.svg"
 
+[autoload]
+
+EventSystem="*res://game/event_system.gd"
+
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=3840
+window/size/viewport_height=2160
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

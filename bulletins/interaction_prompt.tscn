@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://beq4tipvot0h"]
+[gd_scene load_steps=3 format=3 uid="uid://beq4tipvot0h"]
 
 [ext_resource type="Script" path="res://bulletins/interaction_prompt.gd" id="1_svapl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_usr8x"]
 
 [node name="Interaction Prompt" type="Control"]
 layout_mode = 3
@@ -25,6 +27,7 @@ offset_right = 144.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
+label_settings = SubResource("LabelSettings_usr8x")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
