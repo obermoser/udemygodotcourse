@@ -6,4 +6,7 @@ class_name Pickupable
 
 
 func start_interaction():
+	EventSystem.INV_try_to_pickup_item.emit(item_key, destroy_self)
+
+func destroy_self() -> void:
 	parent.queue_free()

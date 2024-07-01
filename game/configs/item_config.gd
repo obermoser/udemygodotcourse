@@ -11,5 +11,5 @@ const ITEM_RESOURCE_PATHS:={
 	Keys.Stone:"res://resources/item_resources/stone_resource.tres"
 }
 
-func get_item_resource(key:Keys) -> ItemResource:
+static func get_item_resource(key:Keys) -> ItemResource:
 	return load(ITEM_RESOURCE_PATHS.get(key))
