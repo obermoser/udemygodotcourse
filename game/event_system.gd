@@ -8,3 +8,8 @@ signal BUL_destroy_bulletin
 #region Inventory
 signal INV_try_to_pickup_item
 #endregion
+
+#region Player
+signal PLA_freeze_player
+signal PLA_unfreeze_player
+#endregion

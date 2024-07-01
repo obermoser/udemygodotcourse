@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://okke5eun4wfm"]
+[gd_scene load_steps=14 format=3 uid="uid://okke5eun4wfm"]
 
+[ext_resource type="Script" path="res://bulletins/player_menus/player_menu_base.gd" id="1_cg8y8"]
 [ext_resource type="Texture2D" uid="uid://dm0jbghqqlfsp" path="res://textures/panelInset_beige.png" id="1_kq0on"]
 [ext_resource type="PackedScene" uid="uid://ci68655kg5p0r" path="res://ui/custom_nodes/inventory_slot.tscn" id="2_3h21g"]
 [ext_resource type="Texture2D" uid="uid://dwnyo02roto1k" path="res://textures/cross.png" id="2_6c0ft"]
@@ -15,6 +16,17 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kcqwo"]
 
+[sub_resource type="InputEventKey" id="InputEventKey_pchbh"]
+device = -1
+keycode = 4194306
+
+[sub_resource type="InputEventKey" id="InputEventKey_yq5l8"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_a5jvc"]
+events = [SubResource("InputEventKey_pchbh"), SubResource("InputEventKey_yq5l8")]
+
 [node name="Player Menu Base" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -22,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_cg8y8")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -205,6 +218,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_0ge8w")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_8msrp")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6sava")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_kcqwo")
+shortcut = SubResource("Shortcut_a5jvc")
 icon = ExtResource("2_6c0ft")
 expand_icon = true
 
@@ -254,3 +268,5 @@ theme_override_font_sizes/font_size = 36
 text = "Placeholder"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Close Button" to="." method="close"]
