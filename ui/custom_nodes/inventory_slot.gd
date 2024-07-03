@@ -19,6 +19,11 @@ func update_icon()->void:
 func _get_drag_data(at_position: Vector2) -> Variant:
 	if item_key !=null:
 		var drag_preview = TextureRect.new()
+		drag_preview.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		drag_preview.texture = icon_texture_rect.texture
+		drag_preview.custom_minimum_size = Vector2(80,80)
+		drag_preview.modulate = Color(1,1,1,0.7)
+		set_drag_preview(drag_preview)
 		return self
 	return null
 

@@ -4,5 +4,11 @@
 
 [node name="Crafting Menu" instance=ExtResource("1_7vjm0")]
 
+[node name="ItemDescriptionLabel" parent="MarginContainer/HBoxContainer/VSplitContainer/DescriptionNinePatchRect/MarginContainer/HBoxContainer" index="0"]
+unique_name_in_owner = true
+
+[node name="IdemExtraInfoLabel" parent="MarginContainer/HBoxContainer/VSplitContainer/DescriptionNinePatchRect/MarginContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+
 [node name="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/UtilityNinePatchRect/MarginContainer/VBoxContainer/NinePatchRect" index="0"]
 text = "Crafting"
