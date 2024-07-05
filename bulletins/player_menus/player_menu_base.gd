@@ -1,8 +1,8 @@
 extends Bulletin
+class_name PlayerMenuBase
 
 @onready var inventory_slots: GridContainer = %InventorySlots
 @onready var item_description_label: Label = %ItemDescriptionLabel
-@onready var idem_extra_info_label: Label = %IdemExtraInfoLabel
 
 func _enter_tree() -> void:
 	EventSystem.INV_inventory_updated.connect(update_inventory_slots)
@@ -30,8 +30,9 @@ func show_item_info(inventory_slot:InventorySlot)->void:
 	var item_key = inventory_slot.item_key
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) or item_key == null:
 		return
+	var item_resource := ItemConfig.get_item_resource(item_key)
 	
-	item_description_label.text = ItemConfig.get_item_resource(item_key).display_name
+	item_description_label.text = item_resource.display_name + "\n" + item_resource.description
 	
 func hide_item_info()->void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):

@@ -1,14 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://c57y478bn1ktr"]
+[gd_scene load_steps=4 format=3 uid="uid://c57y478bn1ktr"]
 
 [ext_resource type="PackedScene" uid="uid://okke5eun4wfm" path="res://bulletins/player_menus/player_menu_base.tscn" id="1_7vjm0"]
+[ext_resource type="Script" path="res://bulletins/player_menus/crafting_menu.gd" id="2_8bcy4"]
+[ext_resource type="PackedScene" uid="uid://c4otdpferat6w" path="res://ui/custom_nodes/crafting_button.tscn" id="3_s374d"]
 
 [node name="Crafting Menu" instance=ExtResource("1_7vjm0")]
-
-[node name="ItemDescriptionLabel" parent="MarginContainer/HBoxContainer/VSplitContainer/DescriptionNinePatchRect/MarginContainer/HBoxContainer" index="0"]
-unique_name_in_owner = true
-
-[node name="IdemExtraInfoLabel" parent="MarginContainer/HBoxContainer/VSplitContainer/DescriptionNinePatchRect/MarginContainer/HBoxContainer" index="1"]
-unique_name_in_owner = true
+script = ExtResource("2_8bcy4")
+crafting_button_scene = ExtResource("3_s374d")
 
 [node name="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/UtilityNinePatchRect/MarginContainer/VBoxContainer/NinePatchRect" index="0"]
 text = "Crafting"
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/UtilityNinePatchRect/MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CraftingButtonContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/UtilityNinePatchRect/MarginContainer/VBoxContainer/CenterContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 32
+columns = 3
