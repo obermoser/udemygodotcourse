@@ -3,6 +3,8 @@ class_name PlayerMenuBase
 
 @onready var inventory_slots: GridContainer = %InventorySlots
 @onready var item_description_label: Label = %ItemDescriptionLabel
+@onready var item_extra_info_label: Label = %ItemExtraInfoLabel
+
 
 func _enter_tree() -> void:
 	EventSystem.INV_inventory_updated.connect(update_inventory_slots)
@@ -24,7 +26,6 @@ func close() -> void:
 func update_inventory_slots(inventory:Array)->void:
 		for i in inventory.size():
 			inventory_slots.get_child(i).set_item_key(inventory[i])
-
 
 func show_item_info(inventory_slot:InventorySlot)->void:
 	var item_key = inventory_slot.item_key
