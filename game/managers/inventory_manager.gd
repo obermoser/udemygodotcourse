@@ -10,6 +10,7 @@ func _enter_tree() -> void:
 	EventSystem.INV_ask_update_inventory.connect(send_inventory)
 	EventSystem.INV_switch_two_item_indexes.connect(switch_item_index)
 	EventSystem.INV_add_item.connect(add_item)
+	EventSystem.INV_delete_crafting_blueprint_costs.connect(delete_crafting_blueprint_costs)
 	
 func _ready() -> void:
 	inventory.resize(inventory_size)
@@ -38,3 +39,14 @@ func switch_item_index(idx1:int, idx2:int)->void:
 	inventory[idx1]=inventory[idx2]
 	inventory[idx2]=item_key1
 	send_inventory()
+
+func delete_crafting_blueprint_costs(costs:Array[BlueprintCostData])->void:
+	for cost in costs:
+		for _i in cost.amount:
+			delete_item(cost.item_key)
+
+
+func delete_item(item_key:ItemConfig.Keys) -> void:
+	if not inventory.has(item_key):
+		return
+	inventory[inventory.rfind(item_key)] = null
