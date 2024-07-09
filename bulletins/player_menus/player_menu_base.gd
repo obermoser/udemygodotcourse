@@ -7,7 +7,7 @@ class_name PlayerMenuBase
 
 
 func _enter_tree() -> void:
-	EventSystem.INV_inventory_updated.connect(update_inventory_slots)
+	EventSystem.INV_inventory_updated.connect(update_inventory)
 	
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -23,7 +23,7 @@ func close() -> void:
 	EventSystem.BUL_destroy_bulletin.emit(BulletinConfig.Keys.CraftingMenu)
 	EventSystem.PLA_unfreeze_player.emit()
 
-func update_inventory_slots(inventory:Array)->void:
+func update_inventory(inventory:Array)->void:
 		for i in inventory.size():
 			inventory_slots.get_child(i).set_item_key(inventory[i])
 

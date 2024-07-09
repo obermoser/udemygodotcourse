@@ -45,4 +45,17 @@ func hide_crafting_info()->void:
 
 
 func crafting_button_pressed(item_key: ItemConfig.Keys):
+	EventSystem.INV_delete_crafting_blueprint_costs.emit(ItemConfig.get_crafting_blueprint_resource(item_key).costs)
 	EventSystem.INV_add_item.emit(item_key)
+
+
+func update_inventory(inventory:Array)->void:
+	super(inventory)
+	for crafting_button in crafting_button_container.get_children():
+		var costs = ItemConfig.get_crafting_blueprint_resource(crafting_button.item_key).costs
+		var disable_button := false
+		for cost_data in costs:
+			if inventory.count(cost_data.item_key) < cost_data.amount:
+				disable_button = true
+				break
+		crafting_button.button.disabled = disable_button
