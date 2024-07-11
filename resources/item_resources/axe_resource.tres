@@ -8,5 +8,6 @@ script = ExtResource("2_ewp70")
 item_key = 10
 display_name = "Axe"
 icon = ExtResource("1_oqf8h")
+is_equippable = true
 description = "A very basic diy axe
 "
