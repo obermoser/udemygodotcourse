@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c165vffuidvi3"]
+
+[ext_resource type="PackedScene" uid="uid://b7dwk15jb61fj" path="res://items/equipables/equipable_template.tscn" id="1_lwhei"]
+[ext_resource type="PackedScene" uid="uid://dka8rbkpxgxnw" path="res://meshes/axe.tscn" id="2_uy8hi"]
+
+[node name="Axe" instance=ExtResource("1_lwhei")]
+
+[node name="Axe" parent="MeshHolder" index="0" instance=ExtResource("2_uy8hi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.5, -0.35)

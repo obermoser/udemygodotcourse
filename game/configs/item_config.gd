@@ -36,6 +36,7 @@ const CRAFTABLE_ITEM_KEYS : Array[Keys] = [
 	#Keys.Raft
 ]
 
+#region Items
 const ITEM_RESOURCE_PATHS:={
 	Keys.Stick:"res://resources/item_resources/stick_resource.tres",
 	Keys.Stone:"res://resources/item_resources/stone_resource.tres",
@@ -46,14 +47,21 @@ const ITEM_RESOURCE_PATHS:={
 
 static func get_item_resource(key:Keys) -> ItemResource:
 	return load(ITEM_RESOURCE_PATHS.get(key))
-
+#endregion
 
 #region Crafting
 const CRAFTING_BLUEPRINT_RESOURCE_PAHTS:={
 	Keys.Axe:"res://resources/crafting_blueprint_resources/axe_blueprint.tres",
 	Keys.Rope:"res://resources/crafting_blueprint_resources/rope_blueprint.tres"
 }
-
 static func get_crafting_blueprint_resource(key:Keys) -> CraftingBlueprintResource:
 	return load(CRAFTING_BLUEPRINT_RESOURCE_PAHTS.get(key))
+#endregion
+
+#region Equipment
+const EQUIPABLE_ITEM_PAHTS:={
+	Keys.Axe:"res://items/equipables/equipable_axe.tscn",
+
+static func get_equpable_item_resource(key:Keys)->PackedScene:
+	return load(EQUIPABLE_ITEM_PAHTS.get(key))
 #endregion
