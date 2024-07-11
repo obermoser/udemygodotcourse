@@ -12,6 +12,7 @@ extends CharacterBody3D
 func _enter_tree() -> void:
 	EventSystem.PLA_freeze_player.connect(set_freeze.bind(true))
 	EventSystem.PLA_unfreeze_player.connect(set_freeze.bind(false))
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -44,8 +45,7 @@ func move() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		look_around(event.relative)
-		
-		
+
 func look_around(relative: Vector2) -> void:
 	rotate_y(-relative.x * mouse_sensitivity)
 	head.rotate_x(-relative.y * mouse_sensitivity)
@@ -57,6 +57,9 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			
 	elif event.is_action_pressed("crafting_menu"):
 		EventSystem.BUL_create_bulletin.emit(BulletinConfig.Keys.CraftingMenu)
+		
+	elif event.is_action_pressed("item_hotkey"):
+		EventSystem.EQU_hotkey_pressed.emit(int(event.as_text()))
 
 func set_freeze(freeze:bool) -> void:
 	set_process(!freeze)
