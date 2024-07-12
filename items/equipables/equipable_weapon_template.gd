@@ -7,6 +7,7 @@ var weapon_item_resource : WeaponItemResource
 
 func _ready() -> void:
 	hit_check_marker.position.z = -weapon_item_resource.range
+	#pass
 
 func check_hit() ->void:
 	var space_state := get_world_3d().direct_space_state
@@ -19,5 +20,5 @@ func check_hit() ->void:
 	
 	var result = space_state.intersect_ray(ray_query_params)
 	
-	if !result.is_empty():
+	if not result.is_empty():
 		result.collider.take_hit(weapon_item_resource)

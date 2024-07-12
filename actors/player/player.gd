@@ -8,6 +8,7 @@ extends CharacterBody3D
 
 @onready var head:Node3D = $Head
 @onready var interaction_raycast: RayCast3D = $"Head/Interaction Raycast"
+@onready var equipable_item_holder: Node3D = $"Head/Equipable Item Holder"
 
 func _enter_tree() -> void:
 	EventSystem.PLA_freeze_player.connect(set_freeze.bind(true))
@@ -18,6 +19,8 @@ func _ready():
 
 func _physics_process(_delta: float) -> void:
 	move()
+	if Input.is_action_just_pressed("use_item"):
+		equipable_item_holder.try_to_use_item()
 	
 func _process(_delta: float) -> void:
 	interaction_raycast.check_interaction()
@@ -60,6 +63,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		
 	elif event.is_action_pressed("item_hotkey"):
 		EventSystem.EQU_hotkey_pressed.emit(int(event.as_text()))
+		
+
 
 func set_freeze(freeze:bool) -> void:
 	set_process(!freeze)

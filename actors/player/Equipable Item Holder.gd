@@ -9,6 +9,10 @@ func _enter_tree() -> void:
 func equip_item(item_key: ItemConfig.Keys):
 	unequip_item()
 	var item_scene := ItemConfig.get_equipable_item_resource(item_key).instantiate()
+	
+	if item_scene is EquipableWeapon:
+		item_scene.weapon_item_resource = ItemConfig.get_item_resource(item_key)
+		
 	add_child(item_scene)
 	current_item_scene = item_scene
 
@@ -17,3 +21,8 @@ func unequip_item():
 	for child in get_children():
 		child.queue_free()
 	current_item_scene = null
+
+func try_to_use_item():
+	if current_item_scene == null:
+		return
+	current_item_scene.try_to_use()
