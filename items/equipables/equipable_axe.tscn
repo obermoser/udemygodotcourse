@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://c165vffuidvi3"]
+[gd_scene load_steps=6 format=3 uid="uid://c165vffuidvi3"]
 
-[ext_resource type="PackedScene" uid="uid://b7dwk15jb61fj" path="res://items/equipables/equipable_template.tscn" id="1_lwhei"]
 [ext_resource type="Script" path="res://items/equipables/equipable_weapon_template.gd" id="2_mj8gc"]
 [ext_resource type="PackedScene" uid="uid://dka8rbkpxgxnw" path="res://meshes/axe.tscn" id="2_uy8hi"]
 
@@ -79,13 +78,17 @@ _data = {
 "use_item": SubResource("Animation_rev1l")
 }
 
-[node name="Axe" instance=ExtResource("1_lwhei")]
+[node name="Axe" type="Node3D"]
 script = ExtResource("2_mj8gc")
 
-[node name="AnimationPlayer" parent="." index="0"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_f8a6w")
 }
 
-[node name="Axe" parent="MeshHolder" index="0" instance=ExtResource("2_uy8hi")]
+[node name="MeshHolder" type="Node3D" parent="."]
+
+[node name="Axe" parent="MeshHolder" instance=ExtResource("2_uy8hi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.5, -0.35)
+
+[node name="HitCheckMarker" type="Marker3D" parent="."]
