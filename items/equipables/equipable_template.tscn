@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://b7dwk15jb61fj"]
+[gd_scene load_steps=2 format=3 uid="uid://b7dwk15jb61fj"]
+
+[ext_resource type="Script" path="res://items/equipables/equipable_item.gd" id="1_iffh7"]
 
 [node name="Equipable Template" type="Node3D"]
+script = ExtResource("1_iffh7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

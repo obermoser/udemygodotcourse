@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://f85ucjpgno8u"]
+[gd_scene load_steps=7 format=3 uid="uid://f85ucjpgno8u"]
 
 [ext_resource type="Script" path="res://actors/player/player.gd" id="1_uswkl"]
 [ext_resource type="Script" path="res://actors/player/Interaction Raycast.gd" id="2_b3a8c"]
 [ext_resource type="Script" path="res://game/managers/inventory_manager.gd" id="3_r4qmu"]
 [ext_resource type="Script" path="res://game/managers/equipped_item_manager.gd" id="4_ecyg5"]
+[ext_resource type="Script" path="res://actors/player/Equipable Item Holder.gd" id="5_7kuax"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qwn5k"]
 radius = 0.25
@@ -27,6 +28,9 @@ target_position = Vector3(0, 2, 0)
 collision_mask = 4
 collide_with_areas = true
 script = ExtResource("2_b3a8c")
+
+[node name="Equipable Item Holder" type="Node3D" parent="Head"]
+script = ExtResource("5_7kuax")
 
 [node name="Managers" type="Node" parent="."]
 

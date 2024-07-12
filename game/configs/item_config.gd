@@ -41,7 +41,7 @@ const ITEM_RESOURCE_PATHS:={
 	Keys.Stick:"res://resources/item_resources/stick_resource.tres",
 	Keys.Stone:"res://resources/item_resources/stone_resource.tres",
 	Keys.Plant:"res://resources/item_resources/plant_resource.tres",
-	Keys.Axe:"res://resources/item_resources/axe_resource.tres",
+	Keys.Axe:"res://resources/item_resources/axe_item_resource.tres",
 	Keys.Rope:"res://resources/item_resources/rope_resource.tres"
 }
 
