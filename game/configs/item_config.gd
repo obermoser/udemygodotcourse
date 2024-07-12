@@ -1,6 +1,6 @@
 class_name ItemConfig
 
-enum Keys{
+enum Keys {
 	#Pickupables
 	Stick,
 	Stone,
@@ -61,7 +61,7 @@ static func get_crafting_blueprint_resource(key:Keys) -> CraftingBlueprintResour
 #region Equipment
 const EQUIPABLE_ITEM_PAHTS:={
 	Keys.Axe:"res://items/equipables/equipable_axe.tscn",
-
-static func get_equpable_item_resource(key:Keys)->PackedScene:
+}
+static func get_equipable_item_resource(key:Keys)->PackedScene:
 	return load(EQUIPABLE_ITEM_PAHTS.get(key))
 #endregion

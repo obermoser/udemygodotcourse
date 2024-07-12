@@ -16,10 +16,10 @@ func _enter_tree() -> void:
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	move()
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	interaction_raycast.check_interaction()
 	
 func move() -> void:
