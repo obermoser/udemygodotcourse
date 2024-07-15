@@ -7,6 +7,7 @@ var weapon_item_resource : WeaponItemResource
 
 func _ready() -> void:
 	hit_check_marker.position.z = -weapon_item_resource.range
+	super()
 	#pass
 
 func check_hit() ->void:

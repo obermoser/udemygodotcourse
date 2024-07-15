@@ -32,6 +32,7 @@ script = ExtResource("2_b3a8c")
 
 [node name="Equipable Item Holder" type="Node3D" parent="Head"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000256002, 0)
 script = ExtResource("5_7kuax")
 
 [node name="Managers" type="Node" parent="."]
