@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://b4ofwvai7rsq7"]
+
+[ext_resource type="Texture2D" uid="uid://dxuhq2dpmwysr" path="res://textures/item_icons/log.png" id="1_b0ni4"]
+[ext_resource type="Script" path="res://resources/item_resources/item_resource.gd" id="2_tyb41"]
+
+[resource]
+script = ExtResource("2_tyb41")
+item_key = 5
+display_name = "Log"
+icon = ExtResource("1_b0ni4")
+is_equippable = false
+description = "A piece of log. Utilize it to construct or build something crazy
+"

@@ -42,7 +42,8 @@ const ITEM_RESOURCE_PATHS:={
 	Keys.Stone:"res://resources/item_resources/stone_resource.tres",
 	Keys.Plant:"res://resources/item_resources/plant_resource.tres",
 	Keys.Axe:"res://resources/item_resources/axe_item_resource.tres",
-	Keys.Rope:"res://resources/item_resources/rope_resource.tres"
+	Keys.Rope:"res://resources/item_resources/rope_resource.tres",
+	Keys.Log:"res://resources/item_resources/log_resource.tres"
 }
 
 static func get_item_resource(key:Keys) -> ItemResource:
@@ -64,4 +65,12 @@ const EQUIPABLE_ITEM_PAHTS:={
 }
 static func get_equipable_item_resource(key:Keys)->PackedScene:
 	return load(EQUIPABLE_ITEM_PAHTS.get(key))
+#endregion
+
+#region Pickupables
+const PICKUPABLE_ITEM_PATHS:={
+	Keys.Log:"res://items/interactables/rigid_pickupable_log.tscn",
+}
+static func get_pickupable_item(key:Keys)->PackedScene:
+	return load(PICKUPABLE_ITEM_PATHS.get(key))
 #endregion

@@ -12,6 +12,7 @@ height = 1.8
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
+collision_mask = 83
 script = ExtResource("1_uswkl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -20,7 +21,7 @@ shape = SubResource("CapsuleShape3D_qwn5k")
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.670256, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Head"]
+[node name="MainCamera" type="Camera3D" parent="Head"]
 
 [node name="Interaction Raycast" type="RayCast3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -30,6 +31,7 @@ collide_with_areas = true
 script = ExtResource("2_b3a8c")
 
 [node name="Equipable Item Holder" type="Node3D" parent="Head"]
+unique_name_in_owner = true
 script = ExtResource("5_7kuax")
 
 [node name="Managers" type="Node" parent="."]

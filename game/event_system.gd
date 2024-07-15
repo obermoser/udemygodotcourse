@@ -26,3 +26,7 @@ signal EQU_equip_item
 signal EQU_unequip_item
 signal EQU_active_hotbar_slot_updated
 #endregion
+
+#region Spawing
+signal SPA_spawn_scene
+#endregion

@@ -8,7 +8,7 @@ extends CharacterBody3D
 
 @onready var head:Node3D = $Head
 @onready var interaction_raycast: RayCast3D = $"Head/Interaction Raycast"
-@onready var equipable_item_holder: Node3D = $"Head/Equipable Item Holder"
+@onready var equipable_item_holder: Node3D = %"Equipable Item Holder"
 
 func _enter_tree() -> void:
 	EventSystem.PLA_freeze_player.connect(set_freeze.bind(true))
@@ -57,7 +57,7 @@ func look_around(relative: Vector2) -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			
+						
 	elif event.is_action_pressed("crafting_menu"):
 		EventSystem.BUL_create_bulletin.emit(BulletinConfig.Keys.CraftingMenu)
 		

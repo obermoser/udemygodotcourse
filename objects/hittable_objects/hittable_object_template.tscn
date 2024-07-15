@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://nnj833myylog"]
+[gd_scene load_steps=3 format=3 uid="uid://nnj833myylog"]
 
 [ext_resource type="Script" path="res://objects/hittable_objects/hittable_object.gd" id="1_h1lh4"]
+[ext_resource type="PackedScene" uid="uid://8k3l2xbmm37x" path="res://objects/hitbox/hitbox.tscn" id="2_7xies"]
 
 [node name="Hittable Object Template" type="Node3D"]
 script = ExtResource("1_h1lh4")
@@ -10,3 +11,7 @@ collision_layer = 65
 collision_mask = 0
 
 [node name="Item Spawn Points" type="Node3D" parent="."]
+
+[node name="Hitbox" parent="." instance=ExtResource("2_7xies")]
+
+[connection signal="register_hit" from="Hitbox" to="." method="register_hit"]
