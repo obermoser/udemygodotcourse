@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://f85ucjpgno8u"]
+[gd_scene load_steps=8 format=3 uid="uid://f85ucjpgno8u"]
 
 [ext_resource type="Script" path="res://actors/player/player.gd" id="1_uswkl"]
 [ext_resource type="Script" path="res://actors/player/Interaction Raycast.gd" id="2_b3a8c"]
+[ext_resource type="Script" path="res://actors/player/player_main_camera.gd" id="2_qwy02"]
 [ext_resource type="Script" path="res://game/managers/inventory_manager.gd" id="3_r4qmu"]
 [ext_resource type="Script" path="res://game/managers/equipped_item_manager.gd" id="4_ecyg5"]
 [ext_resource type="Script" path="res://actors/player/Equipable Item Holder.gd" id="5_7kuax"]
@@ -22,6 +23,8 @@ shape = SubResource("CapsuleShape3D_qwn5k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.670256, 0)
 
 [node name="MainCamera" type="Camera3D" parent="Head"]
+cull_mask = 1048573
+script = ExtResource("2_qwy02")
 
 [node name="Interaction Raycast" type="RayCast3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -30,9 +33,24 @@ collision_mask = 4
 collide_with_areas = true
 script = ExtResource("2_b3a8c")
 
-[node name="Equipable Item Holder" type="Node3D" parent="Head"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Head"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Head/SubViewportContainer"]
+transparent_bg = true
+gui_disable_input = true
+size = Vector2i(1920, 1080)
+
+[node name="EquipmentCam" type="Camera3D" parent="Head/SubViewportContainer/SubViewport"]
+cull_mask = 1047554
+
+[node name="Equipable Item Holder" type="Node3D" parent="Head/SubViewportContainer/SubViewport/EquipmentCam"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000256002, 0)
 script = ExtResource("5_7kuax")
 
 [node name="Managers" type="Node" parent="."]
