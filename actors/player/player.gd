@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var mouse_sensitivity := 0.005
 @export var jump_velocity := 5.0
 @export var gravity := 0.2
+@export var walking_energy_change_per_meter := -0.05
 
 @onready var head:Node3D = $Head
 @onready var interaction_raycast: RayCast3D = $"Head/Interaction Raycast"
@@ -17,10 +18,11 @@ func _enter_tree() -> void:
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	move()
 	if Input.is_action_just_pressed("use_item"):
 		equipable_item_holder.try_to_use_item()
+	check_walking_energy_change(delta)
 	
 func _process(_delta: float) -> void:
 	interaction_raycast.check_interaction()
@@ -44,6 +46,14 @@ func move() -> void:
 	velocity.x = direction.x * speed
 	
 	move_and_slide()
+
+func check_walking_energy_change(delta:float):
+	if velocity.x or velocity.z:
+		EventSystem.PLA_change_energy.emit(
+			delta *
+			walking_energy_change_per_meter * 
+			Vector2(velocity.z, velocity.x).length()
+		)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
