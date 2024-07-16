@@ -23,7 +23,6 @@ shape = SubResource("CapsuleShape3D_qwn5k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.670256, 0)
 
 [node name="MainCamera" type="Camera3D" parent="Head"]
-cull_mask = 1048573
 script = ExtResource("2_qwy02")
 
 [node name="Interaction Raycast" type="RayCast3D" parent="Head"]
@@ -33,23 +32,7 @@ collision_mask = 4
 collide_with_areas = true
 script = ExtResource("2_b3a8c")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Head"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="Head/SubViewportContainer"]
-transparent_bg = true
-gui_disable_input = true
-size = Vector2i(1920, 1080)
-
-[node name="EquipmentCam" type="Camera3D" parent="Head/SubViewportContainer/SubViewport"]
-cull_mask = 1047554
-
-[node name="Equipable Item Holder" type="Node3D" parent="Head/SubViewportContainer/SubViewport/EquipmentCam"]
+[node name="Equipable Item Holder" type="Node3D" parent="Head"]
 unique_name_in_owner = true
 script = ExtResource("5_7kuax")
 
