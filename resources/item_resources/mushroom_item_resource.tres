@@ -1,14 +1,14 @@
-[gd_resource type="Resource" script_class="ConsumableItemResource" load_steps=3 format=3 uid="uid://bs42jnuq8dgda"]
+[gd_resource type="Resource" script_class="ConsumableItemResource" load_steps=3 format=3 uid="uid://c282nski2rpnl"]
 
-[ext_resource type="Texture2D" uid="uid://bq5n8cs5eyjo6" path="res://textures/item_icons/mushroom.png" id="1_67w4l"]
-[ext_resource type="Script" path="res://resources/item_resources/consumable_item_resource.gd" id="1_717ey"]
+[ext_resource type="Script" path="res://resources/item_resources/consumable_item_resource.gd" id="1_46dyc"]
+[ext_resource type="Texture2D" uid="uid://bq5n8cs5eyjo6" path="res://textures/item_icons/mushroom.png" id="1_gi6d4"]
 
 [resource]
-script = ExtResource("1_717ey")
-health_change = -5.0
-energy_change = 10.0
+script = ExtResource("1_46dyc")
+health_change = -10.0
+energy_change = 15.0
 item_key = 3
 display_name = "Mushroom"
-icon = ExtResource("1_67w4l")
+icon = ExtResource("1_gi6d4")
 is_equippable = true
-description = "A tasteless mushroom...but is it edible?"
+description = "A tasteless mushroom. Is it edible?"
