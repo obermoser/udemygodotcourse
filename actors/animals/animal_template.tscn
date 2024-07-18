@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cj6x7eh1y0ihb"]
+[gd_scene load_steps=3 format=3 uid="uid://cj6x7eh1y0ihb"]
 
 [ext_resource type="PackedScene" uid="uid://8k3l2xbmm37x" path="res://objects/hitbox/hitbox.tscn" id="1_qxnxc"]
+[ext_resource type="Script" path="res://actors/animals/animal.gd" id="1_r30co"]
 
 [node name="Animal" type="CharacterBody3D"]
+script = ExtResource("1_r30co")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 
@@ -11,11 +13,20 @@
 [node name="Timers" type="Node" parent="."]
 
 [node name="Idle Timer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
 one_shot = true
 autostart = true
 
 [node name="Wander Timer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
 one_shot = true
 
 [node name="Disappear After Death Timer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
 one_shot = true
+
+[node name="Meat Spawn Marker" type="Marker3D" parent="."]
+
+[connection signal="timeout" from="Timers/Idle Timer" to="." method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="Timers/Wander Timer" to="." method="_on_wander_timer_timeout"]
+[connection signal="timeout" from="Timers/Disappear After Death Timer" to="." method="_on_disappear_after_death_timer_timeout"]

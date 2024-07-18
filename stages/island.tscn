@@ -61,10 +61,6 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mah7y")
 
-[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
-transform = Transform3D(0.397532, 0, 0.917588, 0, 1, 0, -0.917588, 0, 0.397532, 7.17882, 3.25352, -1.1291)
-size = Vector3(136.089, 20, 181.66)
-
 [node name="Spawner" parent="." instance=ExtResource("7_e50q5")]
 
 [node name="Objects" type="Node" parent="."]
