@@ -21,6 +21,8 @@ func _ready() -> void:
 	hotbar.resize(hotbar_size)
 	#Delete me later - temporyry inventory
 	inventory[0] = ItemConfig.Keys.Axe
+	inventory[1] = ItemConfig.Keys.Pickaxe
+
 	
 func try_to_pickup_item(item_key: ItemConfig.Keys, destroy_pickupable:Callable) -> void:
 	if not get_free_slots():
