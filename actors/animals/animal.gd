@@ -50,9 +50,30 @@ func pick_wander_velocity()->void:
 	var dir = Vector2(0,-1).rotated(randf()*PI*2)
 	velocity = Vector3(dir.x, 0, dir.y) * normal_speed
 
-
+#region State Management
 func set_state(new_state:States) -> void:
 	state = new_state
+	
+	match state:
+		States.Idle:
+			idle_timer.start(randf_range(min_idle_time, max_idle_time))
+			animation_player.play(idle_animations.pick_random())
+		
+		States.Wander:
+			pick_wander_velocity()
+			wander_timer.start(randf_range(min_wander_time, max_wander_time))
+		
+		States.Dead:
+			animation_player.play("Walk")
+			animation_player.play("Death")
+			main_collision_shape.disabled = true
+			var meat_scene = ItemConfig.get_pickupable_item(ItemConfig.Keys.RawMeat)
+			EventSystem.SPA_spawn_scene.emit(meat_scene, meat_spawn_marker.global_transform)
+			idle_timer.stop()
+			wander_timer.stop()
+			set_physics_process(false)
+			disappear_after_death_timer.start(15)
+#endregion
 
 func _on_idle_timer_timeout() -> void:
 	set_state(States.Wander)
@@ -63,3 +84,9 @@ func _on_wander_timer_timeout() -> void:
 
 func _on_disappear_after_death_timer_timeout() -> void:
 	queue_free()
+
+
+func take_hit(weapon_item_resource:WeaponItemResource) -> void:
+	health -= weapon_item_resource.damage
+	if state != States.Dead and health <= 0:
+		set_state(States.Dead)

@@ -4,6 +4,8 @@
 [ext_resource type="Script" path="res://actors/animals/animal.gd" id="1_r30co"]
 
 [node name="Animal" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 67
 script = ExtResource("1_r30co")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -27,6 +29,7 @@ one_shot = true
 
 [node name="Meat Spawn Marker" type="Marker3D" parent="."]
 
+[connection signal="register_hit" from="Hitbox" to="." method="take_hit"]
 [connection signal="timeout" from="Timers/Idle Timer" to="." method="_on_idle_timer_timeout"]
 [connection signal="timeout" from="Timers/Wander Timer" to="." method="_on_wander_timer_timeout"]
 [connection signal="timeout" from="Timers/Disappear After Death Timer" to="." method="_on_disappear_after_death_timer_timeout"]
