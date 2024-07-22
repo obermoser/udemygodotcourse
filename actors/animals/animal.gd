@@ -60,6 +60,7 @@ func set_state(new_state:States) -> void:
 			animation_player.play(idle_animations.pick_random())
 		
 		States.Wander:
+			animation_player.play("Walk")
 			pick_wander_velocity()
 			wander_timer.start(randf_range(min_wander_time, max_wander_time))
 		

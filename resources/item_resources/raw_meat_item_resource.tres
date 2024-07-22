@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://b45a33eynfabu"]
+
+[ext_resource type="Texture2D" uid="uid://buolan7uqs5ko" path="res://textures/item_icons/raw_meat.png" id="1_ydobh"]
+[ext_resource type="Script" path="res://resources/item_resources/item_resource.gd" id="2_413si"]
+
+[resource]
+script = ExtResource("2_413si")
+item_key = 8
+display_name = "Raw Meat"
+icon = ExtResource("1_ydobh")
+is_equippable = false
+description = "Some raw meat. Needs to be cooked."

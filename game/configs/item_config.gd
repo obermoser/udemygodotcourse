@@ -46,7 +46,8 @@ const ITEM_RESOURCE_PATHS:={
 	Keys.Rope:"res://resources/item_resources/rope_resource.tres",
 	Keys.Log:"res://resources/item_resources/log_resource.tres",
 	Keys.Mushroom:"res://resources/item_resources/mushroom_item_resource.tres",
-	Keys.Coal: "res://resources/item_resources/coal_item_resource.tres"
+	Keys.Coal: "res://resources/item_resources/coal_item_resource.tres",
+	Keys.RawMeat: "res://resources/item_resources/raw_meat_item_resource.tres"
 }
 
 static func get_item_resource(key:Keys) -> ItemResource:
@@ -76,7 +77,8 @@ static func get_equipable_item_resource(key:Keys)->PackedScene:
 #region Pickupables
 const PICKUPABLE_ITEM_PATHS:={
 	Keys.Log:"res://items/interactables/rigid_pickupable_log.tscn",
-	Keys.Coal: "res://items/interactables/rigid_pickupable_coal.tscn"
+	Keys.Coal: "res://items/interactables/rigid_pickupable_coal.tscn",
+	Keys.RawMeat: "res://items/interactables/rigid_pickupable_raw_meat.tscn"
 }
 static func get_pickupable_item(key:Keys)->PackedScene:
 	return load(PICKUPABLE_ITEM_PATHS.get(key))
