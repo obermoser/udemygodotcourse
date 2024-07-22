@@ -9,9 +9,8 @@ data = PackedVector3Array(-0.0424, -0.1066, -0.0284, -0.0519, -0.1059, 0.2473, 0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_op073"]
 
-[node name="Hittable Coal Boulder" node_paths=PackedStringArray("residue_static_body") instance=ExtResource("1_4tybm")]
+[node name="Hittable Coal Boulder" instance=ExtResource("1_4tybm")]
 attributes = ExtResource("2_3qvcx")
-residue_static_body = NodePath("")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_aq87a")
@@ -35,3 +34,5 @@ shape = SubResource("SphereShape3D_op073")
 [node name="CoalBoulder" parent="." index="3" instance=ExtResource("3_g43b5")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CoalBoulder" index="0"]
+
+[connection signal="register_hit" from="Hitbox" to="." method="register_hit"]

@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+const ANIM_BLEND := 0.2
+
 @onready var idle_timer: Timer = %"Idle Timer"
 @onready var wander_timer: Timer = %"Wander Timer"
 @onready var disappear_after_death_timer: Timer = %"Disappear After Death Timer"
@@ -34,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 #region Animations
 func animation_finished(anim_name:String) -> void:
 	if state == States.Idle:
-		animation_player.play(idle_animations.pick_random())
+		animation_player.play(idle_animations.pick_random(), ANIM_BLEND)
 #endregion
 
 func wander_loop() -> void:
@@ -57,16 +59,16 @@ func set_state(new_state:States) -> void:
 	match state:
 		States.Idle:
 			idle_timer.start(randf_range(min_idle_time, max_idle_time))
-			animation_player.play(idle_animations.pick_random())
+			animation_player.play(idle_animations.pick_random(), ANIM_BLEND)
 		
 		States.Wander:
-			animation_player.play("Walk")
 			pick_wander_velocity()
 			wander_timer.start(randf_range(min_wander_time, max_wander_time))
+			animation_player.play("Walk", ANIM_BLEND)
+
 		
 		States.Dead:
-			animation_player.play("Walk")
-			animation_player.play("Death")
+			animation_player.play("Death", ANIM_BLEND)
 			main_collision_shape.disabled = true
 			var meat_scene = ItemConfig.get_pickupable_item(ItemConfig.Keys.RawMeat)
 			EventSystem.SPA_spawn_scene.emit(meat_scene, meat_spawn_marker.global_transform)

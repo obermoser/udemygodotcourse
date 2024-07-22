@@ -10,7 +10,7 @@ var current_health:float
 func _ready() -> void:
 	current_health = attributes.max_health
 	if residue_static_body != null:
-d		remove_child(residue_static_body)
+		remove_child(residue_static_body)
 	
 func register_hit(weapon_item_resource : WeaponItemResource):
 	if not attributes.weapon_filter.is_empty() and not weapon_item_resource.item_key in attributes.weapon_filter:
