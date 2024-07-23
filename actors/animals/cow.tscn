@@ -4357,6 +4357,7 @@ _data = {
 
 [node name="Cow" instance=ExtResource("1_2cnjt")]
 idle_animations = Array[String](["Idle", "Idle_2", "Eating", "Idle_Headlow"])
+hurt_animations = Array[String](["Idle_HitReact1", "Idle_HitReact2"])
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.00011, -0.206474)

@@ -125,4 +125,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.33561, 0, -2.72728)
 residue_static_body = NodePath("../Hittable Tree/ResidueStaticBody")
 
 [node name="Cow" parent="." instance=ExtResource("9_wojak")]
-transform = Transform3D(0.690592, 0, -0.723244, 0, 1, 0, 0.723244, 0, 0.690592, -1.38733, 0, 7.53638)
+transform = Transform3D(0.690592, 0, -0.723244, 0, 1, 0, 0.723244, 0, 0.690592, 1.40256, 0, 13.2414)
+
+[node name="Cow2" parent="." instance=ExtResource("9_wojak")]
+transform = Transform3D(0.80537, 0, 0.592772, 0, 1, 0, -0.592772, 0, 0.80537, 8.03397, 0, 6.16891)
