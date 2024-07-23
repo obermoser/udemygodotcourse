@@ -13,8 +13,10 @@ config_version=5
 config/name="Udemy Survival Game"
 run/main_scene="res://game/main_game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-boot_splash/image="res://textures/zombieville-svgrepo-com.png"
-config/icon="res://icon.svg"
+boot_splash/image="res://resources/lifejacket-svgrepo-com.png"
+boot_splash/fullsize=false
+config/icon="res://resources/lifejacket-svgrepo-com.png"
+config/windows_native_icon="res://resources/icon.ico"
 
 [autoload]
 
