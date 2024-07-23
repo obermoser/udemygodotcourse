@@ -31,6 +31,12 @@ one_shot = true
 
 [node name="Meat Spawn Marker" type="Marker3D" parent="."]
 
+[node name="Eyes Marker" type="Marker3D" parent="."]
+
+[node name="Attack Hit Area" type="Area3D" parent="."]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
 [connection signal="register_hit" from="Hitbox" to="." method="take_hit"]
 [connection signal="timeout" from="Timers/Idle Timer" to="." method="_on_idle_timer_timeout"]
 [connection signal="timeout" from="Timers/Wander Timer" to="." method="_on_wander_timer_timeout"]

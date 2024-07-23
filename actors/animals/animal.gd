@@ -25,12 +25,22 @@ const ANIM_BLEND := 0.2
 @export var isAggressive := false
 @export var flee_time := 3.0
 
+@export var attacking_distance := 2.0
+@export var damage := 20.0
+
+@onready var eyes_marker: Marker3D = $"Eyes Marker"
+@onready var attack_hit_area: Area3D = $"Attack Hit Area"
+@onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
+
+
 enum States {
 	Idle,
 	Wander,
 	Dead,
 	Flee,
-	Hurt
+	Hurt,
+	Chase,
+	Attack
 }
 var state := States.Idle
 
@@ -42,6 +52,10 @@ func _physics_process(_delta: float) -> void:
 		wander_loop()
 	elif state == States.Flee:
 		flee_loop()
+	elif state == States.Chase:
+		chase_loop()
+	elif state == States.Attack:
+		attack_loop()
 
 #region Animations
 func animation_finished(anim_name:String) -> void:
@@ -53,6 +67,7 @@ func animation_finished(anim_name:String) -> void:
 			set_state(States.Flee)
 #endregion
 
+#region Loops
 func wander_loop() -> void:
 	look_forward()
 	move_and_slide()
@@ -61,7 +76,14 @@ func flee_loop() -> void:
 	look_forward()
 	move_and_slide()
 	
-	
+func chase_loop()->void:
+	pass
+
+func attack_loop()->void:
+	pass
+#endregion
+
+#region Funcs
 func look_forward() -> void:
 	rotation.y = lerp_angle(rotation.y,atan2(velocity.x, velocity.z) + PI, turn_speed_weight)
 
@@ -77,6 +99,15 @@ func pick_away_from_player_velocity():
 	dir.y = 0
 	velocity = dir.normalized() * alarmed_speed
 	
+func take_hit(weapon_item_resource:WeaponItemResource) -> void:
+	health -= weapon_item_resource.damage
+	if state != States.Dead and health <= 0:
+		set_state(States.Dead)
+		
+	elif not state in [States.Flee, States.Dead]:
+		set_state(States.Hurt)
+#endregion	
+
 #region State Management
 func set_state(new_state:States) -> void:
 	state = new_state
@@ -127,10 +158,3 @@ func _on_disappear_after_death_timer_timeout() -> void:
 func _on_flee_timer_timeout() -> void:
 	set_state(States.Idle)
 #endregion
-func take_hit(weapon_item_resource:WeaponItemResource) -> void:
-	health -= weapon_item_resource.damage
-	if state != States.Dead and health <= 0:
-		set_state(States.Dead)
-		
-	elif not state in [States.Flee, States.Dead]:
-		set_state(States.Hurt)
