@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 const ANIM_BLEND := 0.2
 
+#region vars
 @onready var flee_timer: Timer = $"Timers/Flee Timer"
 @onready var idle_timer: Timer = %"Idle Timer"
 @onready var wander_timer: Timer = %"Wander Timer"
@@ -9,9 +10,12 @@ const ANIM_BLEND := 0.2
 @onready var main_collision_shape: CollisionShape3D = $CollisionShape3D
 @onready var meat_spawn_marker: Marker3D = $"Meat Spawn Marker"
 @onready var animation_player:AnimationPlayer = %"AnimationPlayer"
-@onready var health = max_health
+@onready var health := max_health
 @onready var player:CharacterBody3D = get_tree().get_first_node_in_group("Player")
+var player_in_vision_range := false
+#endregion
 
+#region exports
 @export var normal_speed := 0.6
 @export var alarmed_speed := 3.0
 @export var max_health := 80.0
@@ -28,9 +32,13 @@ const ANIM_BLEND := 0.2
 @export var attacking_distance := 2.0
 @export var damage := 20.0
 
+@export var vision_range := 15.0
+#endregion
+
 @onready var eyes_marker: Marker3D = $"Eyes Marker"
 @onready var attack_hit_area: Area3D = $"Attack Hit Area"
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
+@onready var vision_area_col_shape: CollisionShape3D = $"Vision Area/CollisionShape3D"
 
 
 enum States {
@@ -68,6 +76,7 @@ func animation_finished(anim_name:String) -> void:
 		
 		else:
 			set_state(States.Chase)
+			
 	if state == States.Attack:
 		set_state(States.Chase)
 #endregion
@@ -82,23 +91,21 @@ func flee_loop() -> void:
 	move_and_slide()
 	
 func chase_loop()->void:
-	print("Now Chasing")
 	look_forward()
 	if global_position.distance_to(player.global_position) < attacking_distance:
 		set_state(States.Attack)
 		return
+		
 	nav_agent.target_position = player.global_position
 	var dir := global_position.direction_to(nav_agent.get_next_path_position())
 	dir.y = 0
+	
 	velocity = dir.normalized() * alarmed_speed
 	move_and_slide()
-
+	
 func attack_loop()->void:
-	print("Now Attacking")
-	look_forward()
 	var dir = global_position.direction_to(player.global_position)
-	rotation.y = lerp_angle(rotation.y, atan2(dir.x,dir.z)*PI, turn_speed_weight)
-	move_and_slide()
+	rotation.y = lerp_angle(rotation.y, atan2(dir.x, dir.z)+PI, turn_speed_weight)
 	
 #endregion
 
@@ -128,8 +135,8 @@ func take_hit(weapon_item_resource:WeaponItemResource) -> void:
 
 func attack()->void:
 	if player in attack_hit_area.get_overlapping_bodies():
+		print("ATTACK!") #remove later
 		EventSystem.PLA_change_health.emit(-damage)
-		print("ATTACK")
 
 #endregion	
 

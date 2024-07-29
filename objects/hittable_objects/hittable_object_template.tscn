@@ -14,4 +14,4 @@ collision_mask = 0
 
 [node name="Hitbox" parent="." instance=ExtResource("2_7xies")]
 
-[connection signal="register_hit" from="Hitbox" to="." method="register_hit"]
+[connection signal="register_hit" from="Hitbox" to="." method="reg_hit"]
