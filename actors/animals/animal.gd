@@ -65,6 +65,11 @@ func animation_finished(anim_name:String) -> void:
 	elif  state == States.Hurt:
 		if not isAggressive:
 			set_state(States.Flee)
+		
+		else:
+			set_state(States.Chase)
+	if state == States.Attack:
+		set_state(States.Chase)
 #endregion
 
 #region Loops
@@ -77,10 +82,21 @@ func flee_loop() -> void:
 	move_and_slide()
 	
 func chase_loop()->void:
-	pass
+	look_forward()
+	if global_position.distance_to(player.global_position) < attacking_distance:
+		set_state(States.Attack)
+		return
+	nav_agent.target_position = player.global_position
+	var dir := global_position.direction_to(nav_agent.get_next_path_position())
+	dir.y = 0
+	velocity = dir.normalized() * alarmed_speed
+	move_and_slide()
 
 func attack_loop()->void:
-	pass
+	look_forward()
+	var dir = global_position.direction_to(player.global_position)
+	rotation.y = lerp_angle(rotation.y, atan2(dir.x,dir.z)*PI, turn_speed_weight)
+	
 #endregion
 
 #region Funcs
@@ -143,6 +159,15 @@ func set_state(new_state:States) -> void:
 			pick_away_from_player_velocity()
 			animation_player.play("Gallop", ANIM_BLEND)
 			flee_timer.start(flee_time)
+			
+		States.Chase:
+			idle_timer.stop()
+			wander_timer.stop()
+			flee_timer.stop()
+			animation_player.play("Gallop", ANIM_BLEND)
+		
+		States.Attack:
+			animation_player.play("Attack", ANIM_BLEND)
 #endregion
 
 #region Timers
