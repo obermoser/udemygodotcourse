@@ -11,7 +11,7 @@ radius = 0.244893
 height = 1.64972
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nuvkd"]
-radius = 0.170275
+radius = 0.229357
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2mgp"]
 resource_name = "Main"
@@ -4788,8 +4788,13 @@ shape = SubResource("CapsuleShape3D_4jbbu")
 [node name="Meat Spawn Marker" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.482449, 0)
 
+[node name="Eyes Marker" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68874, -0.644128)
+
+[node name="Attack Hit Area" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.636895, -1.09717)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Attack Hit Area" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66241, -1.02518)
 shape = SubResource("SphereShape3D_nuvkd")
 
 [node name="wolf" type="Node3D" parent="." index="7"]

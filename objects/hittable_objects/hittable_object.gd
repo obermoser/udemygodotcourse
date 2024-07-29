@@ -33,3 +33,6 @@ func die():
 		child.queue_free()
 		
 	add_child(residue_static_body)
+
+
+#func _on_hitbox_register_hit(weapon_item_resource:WeaponItemResource) -> void:

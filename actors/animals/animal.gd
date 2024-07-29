@@ -82,6 +82,7 @@ func flee_loop() -> void:
 	move_and_slide()
 	
 func chase_loop()->void:
+	print("Now Chasing")
 	look_forward()
 	if global_position.distance_to(player.global_position) < attacking_distance:
 		set_state(States.Attack)
@@ -93,9 +94,11 @@ func chase_loop()->void:
 	move_and_slide()
 
 func attack_loop()->void:
+	print("Now Attacking")
 	look_forward()
 	var dir = global_position.direction_to(player.global_position)
 	rotation.y = lerp_angle(rotation.y, atan2(dir.x,dir.z)*PI, turn_speed_weight)
+	move_and_slide()
 	
 #endregion
 
@@ -122,6 +125,12 @@ func take_hit(weapon_item_resource:WeaponItemResource) -> void:
 		
 	elif not state in [States.Flee, States.Dead]:
 		set_state(States.Hurt)
+
+func attack()->void:
+	if player in attack_hit_area.get_overlapping_bodies():
+		EventSystem.PLA_change_health.emit(-damage)
+		print("ATTACK")
+
 #endregion	
 
 #region State Management
