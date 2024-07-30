@@ -28,11 +28,10 @@ var player_in_vision_range := false
 @export var max_wander_time := 4.0
 @export var isAggressive := false
 @export var flee_time := 3.0
-
 @export var attacking_distance := 2.0
 @export var damage := 20.0
-
 @export var vision_range := 15.0
+@export var vision_fov := 80.0
 #endregion
 
 @onready var eyes_marker: Marker3D = $"Eyes Marker"
@@ -54,9 +53,12 @@ var state := States.Idle
 
 func _ready() -> void:
 	animation_player.animation_finished.connect(animation_finished)
+	vision_area_col_shape.shape.radius = vision_range
 
 func _physics_process(_delta: float) -> void:
-	if state == States.Wander:
+	if state == States.Idle:
+		idle_loop()
+	elif state == States.Wander:
 		wander_loop()
 	elif state == States.Flee:
 		flee_loop()
@@ -82,9 +84,16 @@ func animation_finished(anim_name:String) -> void:
 #endregion
 
 #region Loops
+func idle_loop()->void:
+	if isAggressive && can_see_player():
+		set_state(States.Chase)
+
 func wander_loop() -> void:
 	look_forward()
 	move_and_slide()
+	
+	if isAggressive && can_see_player():
+		set_state(States.Chase)
 	
 func flee_loop() -> void:
 	look_forward()
@@ -92,14 +101,13 @@ func flee_loop() -> void:
 	
 func chase_loop()->void:
 	look_forward()
-	if global_position.distance_to(player.global_position) < attacking_distance:
+	if global_position.distance_to(player.global_position) <= attacking_distance:
 		set_state(States.Attack)
 		return
 		
 	nav_agent.target_position = player.global_position
 	var dir := global_position.direction_to(nav_agent.get_next_path_position())
 	dir.y = 0
-	
 	velocity = dir.normalized() * alarmed_speed
 	move_and_slide()
 	
@@ -137,7 +145,36 @@ func attack()->void:
 	if player in attack_hit_area.get_overlapping_bodies():
 		print("ATTACK!") #remove later
 		EventSystem.PLA_change_health.emit(-damage)
+		
+func player_in_fov()->bool:
+	if not player:
+		return false
+	var direction_to_player := global_position.direction_to(player.global_position)
+	var forward := -global_transform.basis.z
+	return direction_to_player.angle_to(forward) <= deg_to_rad(vision_fov)
 
+func player_in_los()->bool:
+	if not player:
+		return false
+	var query_params := PhysicsRayQueryParameters3D.new()
+	query_params.from = eyes_marker.global_position
+	query_params.to = player.head.global_position
+	query_params.collision_mask = 1
+	var space_state = get_world_3d().direct_space_state
+	var result := space_state.intersect_ray(query_params)
+	return result.is_empty()
+
+func can_see_player()->bool:
+	return player_in_vision_range and player_in_fov() and player_in_los()
+
+func _on_vision_area_body_entered(body: Node3D) -> void:
+	if body == player:
+		player_in_vision_range = true
+
+
+func _on_vision_area_body_exited(body: Node3D) -> void:
+	if body == player:
+		player_in_vision_range = false
 #endregion	
 
 #region State Management
