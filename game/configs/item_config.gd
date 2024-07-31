@@ -47,7 +47,8 @@ const ITEM_RESOURCE_PATHS:={
 	Keys.Log:"res://resources/item_resources/log_resource.tres",
 	Keys.Mushroom:"res://resources/item_resources/mushroom_item_resource.tres",
 	Keys.Coal: "res://resources/item_resources/coal_item_resource.tres",
-	Keys.RawMeat: "res://resources/item_resources/raw_meat_item_resource.tres"
+	Keys.RawMeat: "res://resources/item_resources/raw_meat_item_resource.tres",
+	Keys.Tent: "res://resources/item_resources/tent_resource.tres"
 }
 
 static func get_item_resource(key:Keys) -> ItemResource:
@@ -68,10 +69,11 @@ static func get_crafting_blueprint_resource(key:Keys) -> CraftingBlueprintResour
 const EQUIPABLE_ITEM_PAHTS:={
 	Keys.Axe:"res://items/equipables/equipable_axe.tscn",
 	Keys.Mushroom: "res://items/equipables/equipable_mushroom.tscn",
-	Keys.Pickaxe:"res://items/equipables/equipable_pickaxe.tscn"
+	Keys.Pickaxe:"res://items/equipables/equipable_pickaxe.tscn",
+	Keys.Tent:"res://items/equipables/equipable_tent.tscn"
 }
 static func get_equipable_item_resource(key:Keys)->PackedScene:
-	return load(EQUIPABLE_ITEM_PAHTS.get(key))
+	return load(EQUIPABLE_ITEM_PAHTS[key])
 #endregion
 
 #region Pickupables
@@ -81,5 +83,14 @@ const PICKUPABLE_ITEM_PATHS:={
 	Keys.RawMeat: "res://items/interactables/rigid_pickupable_raw_meat.tscn"
 }
 static func get_pickupable_item(key:Keys)->PackedScene:
-	return load(PICKUPABLE_ITEM_PATHS.get(key))
+	return load(PICKUPABLE_ITEM_PATHS[key])
+#endregion
+
+#region Constructables
+const CONSTRUCTABLE_SCENES:={
+	Keys.Tent:"res://objects/constructables/constructable_tent.tscn",
+
+}
+static func get_constructable_scene(key:Keys)->PackedScene:
+	return load(CONSTRUCTABLE_SCENES[key])
 #endregion

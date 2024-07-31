@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://dgfkb33cnc31q"]
+
+[ext_resource type="Texture2D" uid="uid://beygklsu3diky" path="res://textures/item_icons/tent.png" id="1_tvrgp"]
+[ext_resource type="Script" path="res://resources/item_resources/item_resource.gd" id="2_6u1f3"]
+
+[resource]
+script = ExtResource("2_6u1f3")
+item_key = 17
+display_name = "Stone"
+icon = ExtResource("1_tvrgp")
+is_equippable = true
+description = "A nice small tent to find some sleep in"
