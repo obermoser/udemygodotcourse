@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp3c8sll3uy0l"]
+
+[ext_resource type="PackedScene" uid="uid://b7dwk15jb61fj" path="res://items/equipables/equipable_item_template.tscn" id="1_sm6w7"]
+[ext_resource type="Script" path="res://items/equipables/equipable_constructable.gd" id="2_3dp16"]
+
+[node name="Equipable Constructable" instance=ExtResource("1_sm6w7")]
+script = ExtResource("2_3dp16")
+
+[node name="ItemPlaceRay" type="RayCast3D" parent="." index="2"]
+target_position = Vector3(0, 0, -3)
+
+[node name="ConstructableArea" type="Area3D" parent="." index="3"]
+top_level = true
+collision_layer = 0
+collision_mask = 126
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConstructableArea" index="0"]
+
+[node name="ConstructablePreviewMesh" type="MeshInstance3D" parent="ConstructableArea" index="1"]
