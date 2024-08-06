@@ -4382,11 +4382,6 @@ radius = 0.314816
 [node name="Cow" instance=ExtResource("1_26y30")]
 idle_animations = Array[String](["Eating", "Idle", "Idle_2", "Idle_Headlow"])
 hurt_animations = Array[String](["Idle_HitReact1", "Idle_HitReact2"])
-attack_audio_key = 9
-
-[node name="Hitbox" parent="." index="1"]
-hit_audio_key = 8
-hit_particles_key = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.295494, 0.0797365)
