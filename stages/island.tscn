@@ -134,7 +134,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31422, 0, 2.70091)
 transform = Transform3D(0.690592, 0, -0.723244, 0, 1, 0, 0.723244, 0, 0.690592, 1.40256, 0, 13.2414)
 
 [node name="Wolf" parent="." instance=ExtResource("10_b4y2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.986741, 0, -0.220078)
+transform = Transform3D(-0.597947, 0, -0.801536, 0, 1, 0, 0.801536, 0, -0.597947, 8.57145, 0, -17.4072)
 
 [node name="Water" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.96, 0)

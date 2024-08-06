@@ -16,7 +16,7 @@ var isConstructing := false
 
 func _ready() -> void:
 	constructable_area.rotation = Vector3.ZERO
-	constructable_preview_mesh.mesh = $MeshHolder.get_child(0).mesh_duplicate()
+	constructable_preview_mesh.mesh = $MeshHolder.get_child(0).mesh.duplicate()
 	constructable_area_col_shape.shape = constructable_preview_mesh.mesh.create_convex_shape()
 
 #region Functions	

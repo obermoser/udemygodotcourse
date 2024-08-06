@@ -17,7 +17,7 @@ func equip_item(item_key: ItemConfig.Keys):
 		item_scene.consumable_item_resource = ItemConfig.get_item_resource(item_key)
 	
 	elif item_scene is EquippableConstructable:
-		item_scene.constructable_item_key = ItemConfig.get_item_resource(item_key)
+		item_scene.constructable_item_key = item_key
 	
 	add_child(item_scene)
 	current_item_scene = item_scene

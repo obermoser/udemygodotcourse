@@ -114,7 +114,6 @@ func chase_loop()->void:
 func attack_loop()->void:
 	var dir = global_position.direction_to(player.global_position)
 	rotation.y = lerp_angle(rotation.y, atan2(dir.x, dir.z)+PI, turn_speed_weight)
-	
 #endregion
 
 #region Funcs
@@ -159,7 +158,7 @@ func player_in_los()->bool:
 	var query_params := PhysicsRayQueryParameters3D.new()
 	query_params.from = eyes_marker.global_position
 	query_params.to = player.head.global_position
-	query_params.collision_mask = 1
+	query_params.collision_mask = 1+64
 	var space_state = get_world_3d().direct_space_state
 	var result := space_state.intersect_ray(query_params)
 	return result.is_empty()

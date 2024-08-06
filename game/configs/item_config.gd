@@ -89,7 +89,6 @@ static func get_pickupable_item(key:Keys)->PackedScene:
 #region Constructables
 const CONSTRUCTABLE_SCENES:={
 	Keys.Tent:"res://objects/constructables/constructable_tent.tscn",
-
 }
 static func get_constructable_scene(key:Keys)->PackedScene:
 	return load(CONSTRUCTABLE_SCENES[key])
