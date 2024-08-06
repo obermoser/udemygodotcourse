@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bwg7yicg4rhcq"]
+[gd_scene load_steps=17 format=3 uid="uid://bwg7yicg4rhcq"]
 
 [ext_resource type="PackedScene" uid="uid://b27ba5vhn2yxw" path="res://meshes/terrain.tscn" id="1_bi8lc"]
 [ext_resource type="PackedScene" uid="uid://ccfxw7l1mfqru" path="res://items/interactables/pickupable_plant.tscn" id="2_jo8t6"]
@@ -8,8 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dxb7delq7bsj5" path="res://items/interactables/pickupable_mushroom.tscn" id="7_f1rl4"]
 [ext_resource type="PackedScene" uid="uid://dqmuofgfswvbt" path="res://objects/hittable_objects/hittable_tree.tscn" id="8_3g27p"]
 [ext_resource type="PackedScene" uid="uid://cqk4mi8th6oy3" path="res://objects/hittable_objects/hittable_coal_boulder.tscn" id="8_mfxps"]
-[ext_resource type="PackedScene" uid="uid://jckten4tubwg" path="res://actors/animals/cow.tscn" id="9_wojak"]
-[ext_resource type="PackedScene" uid="uid://bd6xdiisrxhdd" path="res://actors/animals/wolf.tscn" id="10_b4y2o"]
+[ext_resource type="PackedScene" path="res://actors/animals/cow.tscn" id="9_wojak"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s3voh"]
 sky_top_color = Color(0.32549, 0.878431, 1, 1)
@@ -135,6 +134,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.96, 0)
 mesh = SubResource("PlaneMesh_5v2fp")
 
 [node name="Cow" parent="." instance=ExtResource("9_wojak")]
-
-[node name="Wolf" parent="." instance=ExtResource("10_b4y2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.86032, 0, 7.86321)
