@@ -22,6 +22,7 @@ func _ready() -> void:
 	#Delete me later - temporyry inventory
 	inventory[0] = ItemConfig.Keys.Axe
 	inventory[1] = ItemConfig.Keys.Pickaxe
+	inventory[2] = ItemConfig.Keys.Tent
 
 	
 func try_to_pickup_item(item_key: ItemConfig.Keys, destroy_pickupable:Callable) -> void:

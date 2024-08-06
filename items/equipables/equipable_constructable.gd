@@ -12,6 +12,7 @@ const INVALID_MAT:StandardMaterial3D=preload("res://resources/materials/construc
 var constructable_item_key: ItemConfig.Keys
 var obstacles: Array[Node3D] = []
 var placeValid := false
+var isConstructing := false
 
 func _ready() -> void:
 	constructable_area.rotation = Vector3.ZERO
@@ -50,7 +51,10 @@ func _on_constructable_area_body_entered(body: Node3D) -> void:
 func _on_constructable_area_body_exited(body: Node3D) -> void:
 	obstacles.erase(body)
 
-func construct()->void:
+func try_to_construct()->void:
+	if not placeValid:
+		return
+		
 	EventSystem.EQU_delete_equipped_item.emit()
 	constructable_area.hide()
 	set_process(false)
@@ -58,7 +62,18 @@ func construct()->void:
 		ItemConfig.get_constructable_scene(constructable_item_key),
 		constructable_area.global_transform
 	)
+	isConstructing = true
 
 func destroy_self()->void:
+	if not isConstructing:
+		return
 	EventSystem.EQU_unequip_item.emit()
 #endregion
+
+
+func _on_constructable_area_area_entered(area: Area3D) -> void:
+	obstacles.append(area)
+
+
+func _on_constructable_area_area_exited(area: Area3D) -> void:
+	obstacles.erase(area)
