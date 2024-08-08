@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2h2mhclebe6a"]
+
+[ext_resource type="Script" path="res://items/interactables/cooker/interactable_cooker.gd" id="1_0gdv8"]
+
+[node name="Interactable Cooker" type="Area3D"]
+collision_layer = 4
+collision_mask = 0
+monitorable = false
+script = ExtResource("1_0gdv8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="Cooking Timer" type="Timer" parent="."]
+
+[node name="FoodVisualsHolder" type="Marker3D" parent="."]
