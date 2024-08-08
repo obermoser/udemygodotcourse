@@ -48,7 +48,8 @@ const ITEM_RESOURCE_PATHS:={
 	Keys.Mushroom:"res://resources/item_resources/mushroom_item_resource.tres",
 	Keys.Coal: "res://resources/item_resources/coal_item_resource.tres",
 	Keys.RawMeat: "res://resources/item_resources/raw_meat_item_resource.tres",
-	Keys.Tent: "res://resources/item_resources/tent_resource.tres"
+	Keys.Tent: "res://resources/item_resources/tent_resource.tres",
+	Keys.Campfire: "res://resources/item_resources/campfire_resource.tres"
 }
 
 static func get_item_resource(key:Keys) -> ItemResource:
@@ -70,7 +71,8 @@ const EQUIPABLE_ITEM_PAHTS:={
 	Keys.Axe:"res://items/equipables/equipable_axe.tscn",
 	Keys.Mushroom: "res://items/equipables/equipable_mushroom.tscn",
 	Keys.Pickaxe:"res://items/equipables/equipable_pickaxe.tscn",
-	Keys.Tent:"res://items/equipables/equipable_tent.tscn"
+	Keys.Tent:"res://items/equipables/equipable_tent.tscn",
+	Keys.Campfire: "res://items/equipables/equipable_campfire.tscn"
 }
 static func get_equipable_item_resource(key:Keys)->PackedScene:
 	return load(EQUIPABLE_ITEM_PAHTS[key])
@@ -89,6 +91,7 @@ static func get_pickupable_item(key:Keys)->PackedScene:
 #region Constructables
 const CONSTRUCTABLE_SCENES:={
 	Keys.Tent:"res://objects/constructables/constructable_tent.tscn",
+	Keys.Campfire:"res://objects/constructables/constructable_campfire.tscn"
 }
 static func get_constructable_scene(key:Keys)->PackedScene:
 	return load(CONSTRUCTABLE_SCENES[key])
